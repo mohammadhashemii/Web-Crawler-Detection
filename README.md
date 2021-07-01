@@ -17,5 +17,10 @@ A sample record structure is as follows:
 
 | Phase | Description |
 |--|--|
-| [*EDA*] | Exploratory Data Analysis and Feature Engineering  |
-| [*Baseline Models*] | Train some common and baseline clustring models for anomaly detection |
+| [*EDA*](https://github.com/mohammadhashemii/Web-Crawler-Detection#EDA) | Exploratory Data Analysis and Feature Engineering  |
+| [*Baseline Models*](https://github.com/mohammadhashemii/Web-Crawler-Detection#Baseline-Models) | Train some common and baseline clustring models for anomaly detection |
+
+## EDA
+
+
+## Baseline models
