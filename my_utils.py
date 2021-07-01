@@ -198,7 +198,7 @@ def load_data(csv_path='output.log', req_thres=5, normalize_feat=True):
 
     print("DATASET HAS BEEN LOADED SUCESSFULLY!")
 
-    return X
+    return X, user_df
 
 
 
