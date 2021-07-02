@@ -3,6 +3,7 @@ This work is the final project of [Rahnema College](https://rahnemacollege.com/c
 The aim of this project is to train an unsupervised model in order to recognize the web requests given to [Sanjagh Website](https://sanjagh.pro) are crawlers or not.
 Finally, for taking advantage of this work, we had to create and develope a web application for production phase.
 
+We highly recommend you to see the presentation slides to get a better intuition of what we have done.
 
 ## Dataset
 
