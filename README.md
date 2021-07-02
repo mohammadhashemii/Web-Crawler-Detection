@@ -40,4 +40,8 @@ Then we had to create and generate some features. Here is the list of the featur
 
 ## Baseline models
 
-The baseline models we decided to use are [IsolationForest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html) and [LocalOutlierFactor](http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html)
+The baseline models we decided to use are [IsolationForest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html) and [LocalOutlierFactor](http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html).
+
+### IsolationForest
+
+The Isolation Forest is a technique for the detection of outlier samples. Since outliers have features X that differ significantly from most of the samples, they are isolated earlier in the hierarchy of a decision tree. Outliers are detected by setting a threshold on the mean length (number of splits) from the top of the tree downwards. The Scikit-learn implementation provides a score for each sample that increases from -1 to +1 with the number of splits. The sample with lower score are likely to be outliers. The outlier threshold on the score must be set by the user.
