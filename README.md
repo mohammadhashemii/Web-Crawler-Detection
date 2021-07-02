@@ -39,3 +39,5 @@ Then we had to create and generate some features. Here is the list of the featur
 | *Average of time between requests* | Is more for human requets |
 
 ## Baseline models
+
+The baseline models we decided to use are [IsolationForest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html) and [LocalOutlierFactor](http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html)
