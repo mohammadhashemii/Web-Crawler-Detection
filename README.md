@@ -45,3 +45,16 @@ The baseline models we decided to use are [IsolationForest](https://scikit-learn
 ### IsolationForest
 
 The Isolation Forest is a technique for the detection of outlier samples. Since outliers have features X that differ significantly from most of the samples, they are isolated earlier in the hierarchy of a decision tree. Outliers are detected by setting a threshold on the mean length (number of splits) from the top of the tree downwards. The Scikit-learn implementation provides a score for each sample that increases from -1 to +1 with the number of splits. The sample with lower score are likely to be outliers. The outlier threshold on the score must be set by the user.
+
+![](https://github.com/mohammadhashemii/Web-Crawler-Detection/blob/master/images/IsolationForestScore.png)
+
+And then for better visualization, we applied PCA with 3 components to see how outilers and inliers are seperated.
+
+![](https://github.com/mohammadhashemii/Web-Crawler-Detection/blob/master/images/PCA.png)
+
+
+### LocalOutlierFactor
+
+The anomaly score of each sample is called Local Outlier Factor. It measures the local deviation of density of a given sample with respect to its neighbors. It is local in that the anomaly score depends on how isolated the object is with respect to the surrounding neighborhood. More precisely, locality is given by k-nearest neighbors, whose distance is used to estimate the local density. By comparing the local density of a sample to the local densities of its neighbors, one can identify samples that have a substantially lower density than their neighbors. These are considered outliers.
+
+But the results of IsolationForest were more accurate.
