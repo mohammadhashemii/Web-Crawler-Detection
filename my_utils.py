@@ -137,7 +137,9 @@ def load_data(csv_path='output.log', req_thres=5, normalize_feat=True):
     user_df.drop(columns=['HEAD_count'], inplace=True)
 
     # ------ 6. Percentage of image requests per session
-    image_requests = df[df['path'].str.contains('images',case=False)]
+    condition_1 = df['path'].str.contains('images',case=False)
+    condition_2 = df['path'].str.endswith('.png') | df['path'].str.endswith('.jpg')
+    image_requests = df[condition_1 | condition_2]
     user_df['image_count'] = image_requests.groupby(['ip', 'user_agent'])['path'].agg('size')
     user_df['image_count'] = user_df['image_count'].fillna(0)
     user_df['image_count(%)'] = (user_df['image_count'] / user_df['requests_count']) * 100
