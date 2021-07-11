@@ -161,7 +161,15 @@ def load_data(csv_path='output.log', req_thres=5, normalize_feat=True):
     user_df['is_bot'] = user_df['user_agent'].apply(lambda x: parse(x).is_bot)
     user_df['is_pc'] = user_df['user_agent'].apply(lambda x: parse(x).is_pc)
 
-    # ------ 10. Average of time between requests per session
+    # ------ 10. Number of robots.txt requests per session
+    # fetch the robots.txt requests
+    condition_1 = df['path'].str.contains('robots.txt',case=False)
+    robots_requests = df[condition_1]
+    # create a column in user_df dataframe as "robots_req_count" which contains the number of robots.txt requets
+    user_df['robots_txt_reqs'] = robots_requests.groupby(['ip', 'user_agent'])['path'].agg('size')
+    user_df['robots_txt_reqs'] = user_df['robots_txt_reqs'].fillna(0)
+
+    # ------ 11. Average of time between requests per session
 
     # first we drop all the sessions with less than req_thres requests
     user_df.drop(user_df[user_df["requests_count"] < req_thres].index, inplace=True)
@@ -185,7 +193,8 @@ def load_data(csv_path='output.log', req_thres=5, normalize_feat=True):
                             'mean_response_length',
                             'total_response_time',
                             'mean_response_time',
-                            'avg_time_diff']
+                            'avg_time_diff',
+                            'robots_txt_reqs']
 
         scaler = StandardScaler()
         X[to_be_normalized] = scaler.fit_transform(X[to_be_normalized])
@@ -201,6 +210,8 @@ def load_data(csv_path='output.log', req_thres=5, normalize_feat=True):
     print("DATASET HAS BEEN LOADED SUCESSFULLY!")
 
     return X, user_df, df
+
+
 
 
 
