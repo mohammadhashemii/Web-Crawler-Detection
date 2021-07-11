@@ -154,20 +154,21 @@ def load_data(csv_path='output.log', req_thres=5, normalize_feat=True):
     # ------ 8. Average of the path_count_normalized per user
     user_df['avg_path_count_norm'] = df.groupby(['ip', 'user_agent'])['path_count_normalized'].agg('mean')
 
-    # ------ 9. Set the browser for each user agent
-    user_df = user_df.reset_index()
-    user_df['browser'] = user_df['user_agent'].apply(lambda x: parse(x).browser.family)
-    user_df['os'] = user_df['user_agent'].apply(lambda x: parse(x).os.family)
-    user_df['is_bot'] = user_df['user_agent'].apply(lambda x: parse(x).is_bot)
-    user_df['is_pc'] = user_df['user_agent'].apply(lambda x: parse(x).is_pc)
-
-    # ------ 10. Number of robots.txt requests per session
+    # ------ 9. Number of robots.txt requests per session
     # fetch the robots.txt requests
     condition_1 = df['path'].str.contains('robots.txt',case=False)
     robots_requests = df[condition_1]
     # create a column in user_df dataframe as "robots_req_count" which contains the number of robots.txt requets
     user_df['robots_txt_reqs'] = robots_requests.groupby(['ip', 'user_agent'])['path'].agg('size')
     user_df['robots_txt_reqs'] = user_df['robots_txt_reqs'].fillna(0)
+
+    # ------ 10. Set the browser for each user agent
+    user_df = user_df.reset_index()
+    user_df['browser'] = user_df['user_agent'].apply(lambda x: parse(x).browser.family)
+    user_df['os'] = user_df['user_agent'].apply(lambda x: parse(x).os.family)
+    user_df['is_bot'] = user_df['user_agent'].apply(lambda x: parse(x).is_bot)
+    user_df['is_pc'] = user_df['user_agent'].apply(lambda x: parse(x).is_pc)
+
 
     # ------ 11. Average of time between requests per session
 
