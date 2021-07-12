@@ -9,9 +9,8 @@ def run():
 
     model = Autoencoder(CFG)
     model.load_data()
-    #model.build()
-    #model.train()
-    #model.evaluate()
+    model.build()
+    #model.predict()
 
 
 if __name__ == '__main__':
