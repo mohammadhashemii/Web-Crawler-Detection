@@ -1,10 +1,7 @@
 import numpy as np
 import pandas as pd
-import re
 import json
-import warnings
 from user_agents import parse
-from sklearn import preprocessing
 from sklearn.preprocessing import StandardScaler
 
 def use_api(raw_user_agent, api_key):
