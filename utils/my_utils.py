@@ -3,6 +3,8 @@ import pandas as pd
 import json
 from user_agents import parse
 from sklearn.preprocessing import StandardScaler
+import logging
+import requests
 
 def use_api(raw_user_agent, api_key):
     
@@ -61,10 +63,10 @@ def create_user_agents_dic(user_agents_set, api_key, json_path="user_agent.json"
         json.dump(user_agents_dic, fp)
 
 
-def create_DataFrame(csv_path='output.log'):
+def create_DataFrame(log_path='output.log'):
     regex = r'\s(?=(?:[^"]*"[^"]*")*[^"]*$)(?![^\[]*\])'    
     
-    df = pd.read_csv(csv_path, 
+    df = pd.read_csv(log_path,
           sep=regex, 
           engine='python',  
           names=['ip', 'time', 'request', 'status_code', 'response_length', 'user_agent', 'response_time'],           
@@ -85,12 +87,14 @@ def create_DataFrame(csv_path='output.log'):
     return df
 
 
-def load_data(csv_path='output.log', req_thres=5, normalize_feat=True):
+def load_data(log_path='output.log', req_thres=5, normalize_feat=True):
 
-    print("LOADING THE DATASET...")
+    print(">> LOADING THE DATASET...")
+    print("- Log path: {}".format(log_path))
+    print("- Request threshold: {}".format(req_thres))
  
-    # load the csv file into a DataFrame
-    df = create_DataFrame(csv_path=csv_path)
+    # load the log file into a DataFrame
+    df = create_DataFrame(log_path=log_path)
     # drop all the records with ip = NaN values
     df.drop(df[df['ip'].isna()].index, inplace = True)
     # fill the NaN values with 0 for response_time column
@@ -205,7 +209,7 @@ def load_data(csv_path='output.log', req_thres=5, normalize_feat=True):
         X = X.join(oh)
         X.drop(['browser', 'os'], axis=1, inplace=True)
 
-    print("DATASET HAS BEEN LOADED SUCESSFULLY!")
+    print(">> DATASET HAS BEEN LOADED SUCESSFULLY!")
 
     return X, user_df, df
 
