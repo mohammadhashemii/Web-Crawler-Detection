@@ -16,7 +16,7 @@ def use_api(raw_user_agent, api_key):
     # Where will the request be sent to
     api_url = "https://api.whatismybrowser.com/api/v2/user_agent_parse"
     
-    # -- Set up HTTP Headers
+    # -- Set up HTTP Headers.
     headers = {
         'X-API-KEY': api_key,
     }
