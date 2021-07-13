@@ -27,21 +27,33 @@ const Home = (props) =>{
         {logList.length > 0  && <table className="log-list-table">
             <thead >
                     <th  className="log-list-header log-header-bigger">
-                        Log
+                        IP
                     </th>
                     <th  className="log-list-header log-header-bigger">
-                        Score
+                        User agent
+                    </th>
+                    <th  className="log-list-header log-header-bigger">
+                        MSE score
+                    </th>
+                    <th  className="log-list-header log-header-bigger">
+                        Is crawler?
                     </th>
             </thead>
             <tbody> 
                 {logList.map((listItem)=>{
                     return( 
                     <tr>
-                        <td className="tr1">
+                        <td className="tr">
                             {listItem[0]}
                         </td>
-                        <td className="tr2">
+                        <td className="tr">
                             {listItem[1]}
+                        </td>
+                        <td className="tr">
+                            {listItem[2]}
+                        </td>
+                        <td className="tr">
+                            {listItem[3]}
                         </td>
                     </tr> 
                     )

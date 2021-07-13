@@ -13,7 +13,8 @@ def run():
     print(">> BUILDING THE MODEL...")
     model.build()
     print(">> PREDICTING...")
-    model.predict()
+    results = model.predict()
+    return results  # to use in the api
 
 
 if __name__ == '__main__':

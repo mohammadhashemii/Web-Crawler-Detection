@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
-
+from main import run
 import os
 
 
@@ -23,12 +23,10 @@ def getIsCrawled():
     if uploadedFile:
         file_path = os.path.join(uploads_dir, uploadedFile.filename)
         uploadedFile.save(file_path)
-        print(file_path)
-        #print(uploadedFile.read())
 
-        ##TODO convert to csv
-    mockReturn = [["logloglog", 123], ["logloglog", 222], ["logloglog", 434], ["logloglog", 222], ["logloglog", 434], ["logloglog", 222], ["logloglog", 434], ["logloglog", 222], ["logloglog", 434], ["logloglog", 222], ["logloglog", 434], ["logloglog", 222], ["logloglog", 434]]
-    return jsonify(mockReturn)
+        # get the model predictions
+        preds = run()
+        return jsonify(preds.values.tolist())
 
 if __name__ == '__main__':
     app.run(debug=True, port=5005)

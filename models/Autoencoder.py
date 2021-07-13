@@ -30,6 +30,7 @@ class Autoencoder():
         # predict
         self.model_weights = self.config.predict.model_weights
         self.mse_threshold = self.config.predict.mse_threshold
+        self.results = None
 
     def load_data(self):
         """Loads data"""
@@ -61,8 +62,8 @@ class Autoencoder():
 
         # model summary
         self.model.summary()
-        with open('./models/autoencoder_architecture.txt', 'w') as f:
-            self.model.summary(print_fn=lambda x: f.write(x + '\n'))
+        #with open('./models/autoencoder_architecture.txt', 'w') as f:
+        #    self.model.summary(print_fn=lambda x: f.write(x + '\n'))
 
     def predict(self):
         """predict some observation"""
@@ -74,8 +75,15 @@ class Autoencoder():
 
         self.data['mse'] = mse
         self.data['is_crawler'] = mse > self.mse_threshold
+        self.data['is_crawler'] = self.data['is_crawler'].astype(int)
 
-        print(self.data.to_string())
+        self.results = self.data.reset_index()
+        self.results = self.results[['ip', 'user_agent', 'mse', 'is_crawler']]
+        print(self.results.to_string())
+
+        return self.results
+
+
 
 
 
