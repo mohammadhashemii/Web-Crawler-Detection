@@ -6,7 +6,8 @@ from dataloader.dataloader import DataLoader
 from configs.config import Config
 
 #external
-from keras.models import Model, load_model
+import numpy as np
+from keras.models import Model
 from keras.layers import Input, Dense
 
 
@@ -14,15 +15,20 @@ class Autoencoder():
     """Autoencoder Model Class"""
 
     def __init__(self, config):
+        # load data
         self.data = None
         self.config = Config.from_json(config)
 
+        # build
         self.model = None
         self.epochs = self.config.train.epochs
         self.batch_size = self.config.train.batch_size
         self.loss = self.config.train.loss
         self.optimizer = self.config.train.optimizer
         self.metric = self.config.train.metric
+
+        # predict
+        self.model_weights = self.config.predict.model_weights
 
     def load_data(self):
         """Loads data"""
@@ -56,6 +62,17 @@ class Autoencoder():
         print(self.model.summary())
         with open('./models/autoencoder_architecture.txt', 'w') as f:
             self.model.summary(print_fn=lambda x: f.write(x + '\n'))
+
+    def predict(self):
+        """predict some observation"""
+        self.model.load_weights(self.model_weights)
+
+        preds = self.model.predict(self.data)
+        # get the error term
+        mse = np.mean(np.power(self.data.to_numpy() - preds, 2), axis=1)
+        self.data['mse'] = mse
+
+
 
 
 

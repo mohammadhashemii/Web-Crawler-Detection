@@ -9,7 +9,7 @@ def run():
 
     model = Autoencoder(CFG)
     model.load_data()
-    #model.build()
+    model.build()
     #model.predict()
 
 

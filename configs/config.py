@@ -19,6 +19,10 @@ CFG = {
         "loss": 'mean_squared_error',
         "optimizer": "adam",
         "metric": "accuracy"
+    },
+    "predict": {
+        "model_weights": "./checkpoints/autoencoder_weights_01.h5",
+        "mse_threshold": 0.934
     }
 }
 
@@ -26,15 +30,16 @@ CFG = {
 class Config:
     """Config class which contains data, train and model hyperparameters"""
 
-    def __init__(self, data, train):
+    def __init__(self, data, train, predict):
         self.data = data
         self.train = train
+        self.predict = predict
 
     @classmethod
     def from_json(cls, cfg):
         """Creates config from json"""
         params = json.loads(json.dumps(cfg), object_hook=HelperObject)
-        return cls(params.data, params.train)
+        return cls(params.data, params.train, params.predict)
 
 
 class HelperObject(object):
