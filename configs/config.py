@@ -5,17 +5,20 @@ import json
 
 CFG = {
     "data": {
-        "path": "./dataset/output.log",
+        "path": "./dataset/output_sample.log",
         "req_threshold": 4,
+        "features": ['requests_count', 'path_length_std', '4xx_percentage(%)',
+                    '3xx_percentage(%)', 'HEAD_count(%)', 'image_count(%)',
+                    'total_response_length', 'mean_response_length', 'total_response_time',
+                    'mean_response_time', 'avg_path_count_norm', 'robots_txt_reqs',
+                    'is_bot', 'is_pc', 'avg_time_diff']
     },
     "train": {
         "batch_size": 64,
-        "epoches": 25,
+        "epochs": 25,
         "loss": 'mean_squared_error',
-        "optimizer": {
-            "type": "adam"
-        },
-        "metrics": ["accuracy"]
+        "optimizer": "adam",
+        "metric": "accuracy"
     }
 }
 

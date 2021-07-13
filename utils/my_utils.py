@@ -203,12 +203,16 @@ def load_data(log_path='output.log', req_thres=5, normalize_feat=True):
 
 
         # Get one hot encoding of some columns
-        to_be_oh_encoded = ['browser', 'os']
-        oh = pd.get_dummies(X[to_be_oh_encoded], drop_first=True)
+        #to_be_oh_encoded = ['browser', 'os']
+        #oh = pd.get_dummies(X[to_be_oh_encoded], drop_first=True)
         # Join the encoded df
-        X = X.join(oh)
+        #X = X.join(oh)
         X.drop(['browser', 'os'], axis=1, inplace=True)
 
+        X['is_bot'] = X['is_bot'].astype(int)
+        X['is_pc'] = X['is_pc'].astype(int)
+
+    print("- Total shape of the dataset:{}".format(X.shape))
     print(">> DATASET HAS BEEN LOADED SUCESSFULLY!")
 
     return X, user_df, df
