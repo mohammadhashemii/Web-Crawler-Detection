@@ -5,7 +5,7 @@ function Loading(props) {
   return (
     <div className="loadcontainer">
       <div className="loadcenter"></div>
-      <h1>Loading...</h1>
+      <h1>Processing...</h1>
     </div>
   );
 }
