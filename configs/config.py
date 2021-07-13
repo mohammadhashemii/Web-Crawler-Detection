@@ -22,7 +22,7 @@ CFG = {
     },
     "predict": {
         "model_weights": "./checkpoints/autoencoder_weights_01.h5",
-        "mse_threshold": 0.934
+        "mse_threshold": 0.688
     }
 }
 

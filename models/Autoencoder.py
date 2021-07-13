@@ -29,6 +29,7 @@ class Autoencoder():
 
         # predict
         self.model_weights = self.config.predict.model_weights
+        self.mse_threshold = self.config.predict.mse_threshold
 
     def load_data(self):
         """Loads data"""
@@ -59,7 +60,7 @@ class Autoencoder():
                             metrics=self.metric)
 
         # model summary
-        print(self.model.summary())
+        self.model.summary()
         with open('./models/autoencoder_architecture.txt', 'w') as f:
             self.model.summary(print_fn=lambda x: f.write(x + '\n'))
 
@@ -70,7 +71,12 @@ class Autoencoder():
         preds = self.model.predict(self.data)
         # get the error term
         mse = np.mean(np.power(self.data.to_numpy() - preds, 2), axis=1)
+
         self.data['mse'] = mse
+        self.data['is_crawler'] = mse > self.mse_threshold
+
+        print(self.data.to_string())
+
 
 
 

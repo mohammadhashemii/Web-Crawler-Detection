@@ -8,9 +8,12 @@ from models.Autoencoder import Autoencoder
 def run():
 
     model = Autoencoder(CFG)
+    print(">> LOADING THE DATA...")
     model.load_data()
+    print(">> BUILDING THE MODEL...")
     model.build()
-    #model.predict()
+    print(">> PREDICTING...")
+    model.predict()
 
 
 if __name__ == '__main__':

@@ -89,7 +89,7 @@ def create_DataFrame(log_path='output.log'):
 
 def load_data(log_path='output.log', req_thres=5, normalize_feat=True):
 
-    print(">> LOADING THE DATASET...")
+
     print("- Log path: {}".format(log_path))
     print("- Request threshold: {}".format(req_thres))
  
@@ -213,7 +213,6 @@ def load_data(log_path='output.log', req_thres=5, normalize_feat=True):
         X['is_pc'] = X['is_pc'].astype(int)
 
     print("- Total shape of the dataset:{}".format(X.shape))
-    print(">> DATASET HAS BEEN LOADED SUCESSFULLY!")
 
     return X, user_df, df
 
