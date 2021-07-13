@@ -79,6 +79,7 @@ class Autoencoder():
 
         self.results = self.data.reset_index()
         self.results = self.results[['ip', 'user_agent', 'mse', 'is_crawler']]
+        self.results = self.results.round(3)
         print(self.results.to_string())
 
         return self.results
