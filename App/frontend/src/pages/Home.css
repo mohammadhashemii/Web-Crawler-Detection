@@ -1,0 +1,76 @@
+.log-list-table{
+    margin: auto;
+    margin-top: 1%;
+    box-shadow: 1px 1px 10px 1px gray;
+    border-style: solid;
+    /* border-radius: 0.5rem; */
+    border-color: #3b8d99;
+   display: block;
+   width: 45%;
+   max-height: 800px;
+   overflow-y: auto;
+}
+.log-list-header{
+    background-color: #3b8d99;
+    color: white;
+    padding: 10px;
+    position: relative;
+}
+
+.log-header-bigger{
+    width: 90%;
+}
+.log-header-smaller{
+    width: 10%;
+}
+tr{
+    width: 100%;
+}
+
+
+tbody{
+    max-height: 300px;
+    overflow-y: scroll;
+}
+tbody td{
+  padding: 30px;
+  
+}
+tbody tr:nth-child(odd){
+  background-color: #f5f9fc;
+}
+
+
+
+input {
+    display:none;
+}
+.upload-label {
+
+    width: 10%;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: linear-gradient(to right, #aa4b6b, #6b6b83, #3b8d99);
+    color: white;
+    font-family: sans-serif;
+    transition: all .5s;
+    box-shadow: 1px 1px 15px 3px gray;
+    margin-bottom: 2%;
+
+    margin-top: 2%;
+}
+.upload-label:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+body{
+
+    background-color: rgb(231, 234, 235);
+}
