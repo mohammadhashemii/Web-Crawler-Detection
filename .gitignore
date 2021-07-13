@@ -9,6 +9,9 @@
 # testing
 /coverage
 
+#jetbrains
+.idea
+
 # production
 /build
 
