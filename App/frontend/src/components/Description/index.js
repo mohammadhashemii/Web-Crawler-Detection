@@ -4,7 +4,7 @@ const Description = () => {
     return (
         <>
             <DescriptionContainer>
-                <DescriptionText >This is a demo of the <a href="https://rahnemacollege.com/">Rahnema College</a> Machine Learning internship final project. You can upload a log file which contains
+                <DescriptionText >This is a demo of the <a href="https://rahnemacollege.com/">Rahnema College</a> Machine Learning internship final project. You can upload a log file(e.g. <i>output.log</i>) which contains
                     the server logs in order to detect the crawlers. <a href="https://github.com/mohammadhashemii/Web-Crawler-Detection">[Source Code]</a>
                 </DescriptionText>
 
