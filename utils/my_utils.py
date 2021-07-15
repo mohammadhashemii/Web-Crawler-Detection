@@ -163,7 +163,23 @@ def load_data(log_path='output.log', req_thres=5, normalize_feat=True):
     user_df['robots_txt_reqs'] = robots_requests.groupby(['ip', 'user_agent'])['path'].agg('size')
     user_df['robots_txt_reqs'] = user_df['robots_txt_reqs'].fillna(0)
 
-    # ------ 10. Set the browser for each user agent
+    # ------ 10. user_df.drop(columns='merged_paths', axis=1,inplace=True)
+    user_df['merged_paths'] = df.groupby(['ip', 'user_agent'])['path'].apply(' '.join)
+
+    def consq_rep_reqs(merged_path):
+        splited_paths = merged_path.split(" ")
+        for idx in range(len(splited_paths)):
+            splited_parts = splited_paths[idx].split("/")
+            if len(splited_parts) > 1:
+                splited_paths[idx] = "/".join(splited_parts[:-1])
+        return len(np.unique(np.array(splited_paths)))
+
+    user_df['consq_rep_path_count'] = user_df['merged_paths'].apply(consq_rep_reqs)
+    user_df['consq_rep_path_count'] = user_df['requests_count'] - user_df['consq_rep_path_count']
+    user_df['consq_rep_path_count'] = user_df['consq_rep_path_count'] / user_df['requests_count']
+    user_df.drop(columns='merged_paths', axis=1, inplace=True)
+
+    # ------ 11. Set the browser for each user agent
     user_df = user_df.reset_index()
     user_df['browser'] = user_df['user_agent'].apply(lambda x: parse(x).browser.family)
     user_df['os'] = user_df['user_agent'].apply(lambda x: parse(x).os.family)
@@ -171,7 +187,7 @@ def load_data(log_path='output.log', req_thres=5, normalize_feat=True):
     user_df['is_pc'] = user_df['user_agent'].apply(lambda x: parse(x).is_pc)
 
 
-    # ------ 11. Average of time between requests per session
+    # ------ 12. Average of time between requests per session
 
     # first we drop all the sessions with less than req_thres requests
     user_df.drop(user_df[user_df["requests_count"] < req_thres].index, inplace=True)
@@ -196,7 +212,8 @@ def load_data(log_path='output.log', req_thres=5, normalize_feat=True):
                             'total_response_time',
                             'mean_response_time',
                             'avg_time_diff',
-                            'robots_txt_reqs']
+                            'robots_txt_reqs',
+                            'consq_rep_path_count']
 
         scaler = StandardScaler()
         X[to_be_normalized] = scaler.fit_transform(X[to_be_normalized])
