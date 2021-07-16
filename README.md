@@ -87,7 +87,7 @@ It is a neural network architecture capable of discovering structure within data
 Additionally, multiple architectures have been tested and the comparison of them is shown below:
 
  | # of neurons | Train loss | Test loss |
-|--|--|
+|--|--|--|
 | *[15, 7, 15]* | 0.42 | 0.48 |
 | ***[15, 3, 15]*** | 0.28 | 0.39 |
 | *[15, 7, 3, 7, 15]* | 0.29 | 0.43 |
