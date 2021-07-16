@@ -9,7 +9,7 @@ const Description = () => {
                 </DescriptionText>
 
                 <DescriptionText>
-                    A sample log is shown here. Therfore, the logs in the file you upload must be the same as the below sample: <a href="https://github.com/mohammadhashemii/Web-Crawler-Detection/blob/master/README.md">[Help]</a>
+                    A sample log is shown here. Therfore, the logs in the file you upload must be the same as the sample below: <a href="https://github.com/mohammadhashemii/Web-Crawler-Detection/blob/master/README.md">[Help]</a>
                 </DescriptionText>
                 <SampleLog>
                     207.213.193.143 [2021-5-12T5:6:0.0+0430] [Get /cdn/profiles/1026106239] 304 0 [[Googlebot-Image/1.0]] 32

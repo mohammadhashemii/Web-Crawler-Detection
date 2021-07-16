@@ -6,8 +6,8 @@
     /* border-radius: 0.5rem; */
     border-color: #f2a000;
    display: block;
-   width: 45%;
-   max-height: 600px;
+   width: 55%;
+   max-height: 500px;
    overflow-y: auto;
 }
 .log-list-header{

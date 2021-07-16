@@ -36,19 +36,23 @@ const Home = (props) =>{
     return (<>
         <Navbar/>
         <Description/>
+        <label htmlFor="pic" className="upload-label">
+            <span>Upload</span>
+            <input type="file" name="file" id="pic" onChange={onFileUpload}/>
+        </label>
         <div>
         {logList.length > 0  && <table className="log-list-table">
             <thead >
-                    <th  className="log-list-header log-header-bigger">
+                    <th  className="log-list-header log-header-smaller">
                         IP
                     </th>
                     <th  className="log-list-header log-header-bigger">
                         User agent
                     </th>
-                    <th  className="log-list-header log-header-bigger">
+                    <th  className="log-list-header log-header-smaller">
                         MSE score
                     </th>
-                    <th  className="log-list-header log-header-bigger">
+                    <th  className="log-list-header log-header-smaller">
                         Is crawler?
                     </th>
             </thead>
@@ -74,10 +78,7 @@ const Home = (props) =>{
 
             </tbody>
         </table>}
-        <label for="pic" className="upload-label">
-            <span>Upload</span>
-            <input type="file" name="file" id="pic" onChange={onFileUpload}/>
-        </label>
+
     </div>
     </>)
 
