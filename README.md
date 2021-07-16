@@ -19,13 +19,14 @@ A sample record structure is as follows:
 | Phase | Description |
 |--|--|
 | [*EDA*](https://github.com/mohammadhashemii/Web-Crawler-Detection#EDA) | Exploratory Data Analysis and Feature Engineering.  |
-| [*Baseline Models*](https://github.com/mohammadhashemii/Web-Crawler-Detection#Baseline-Models) | Train some common and baseline Clustering models for anomaly detection |
+| [*Baseline Models*](https://github.com/mohammadhashemii/Web-Crawler-Detection#Baseline-Models) | Train some common and baseline Clustering models for anomaly detection. |
+| [*Advanced Models*](https://github.com/mohammadhashemii/Web-Crawler-Detection#Advanced-Models) | Auto encoders are used! |
 
 ## EDA
 
 In this phase we just got to know the data better! We exploratory searched about useful information in the dataset and tried to extract appropriate clues from it. It is highly recommended running the `01_sanjaghDatasetEDA.ipynb` in [notebooks/](https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/notebooks) to see what we have exactly done in this part.
 
-Then we had to create and generate some features per session. These features can be modified in `my_utils.py` in [utils](https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/utils) Here is the list of the features we have used:
+Then we had to create and generate some features per session. These features can be modified in `my_utils.py` in [utils/](https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/utils) Here is the list of the features we have used:
 
 | Features per session | Description |
 |--|--|
@@ -61,3 +62,36 @@ And then for better visualization, we applied PCA with 3 components to see how o
 The anomaly score of each sample is called Local Outlier Factor. It measures the local deviation of density of a given sample with respect to its neighbors. It is local in that the anomaly score depends on how isolated the object is with respect to the surrounding neighborhood. More precisely, locality is given by k-nearest neighbors, whose distance is used to estimate the local density. By comparing the local density of a sample to the local densities of its neighbors, one can identify samples that have a substantially lower density than their neighbors. These are considered outliers.
 
 But the results of IsolationForest were more accurate.
+
+## Advanced Models
+
+One of the most promising methods for unsupervised task is Auto encoders. We got the best results for that.
+
+### Auto encoders
+
+It is a neural network architecture capable of discovering structure within data in order to develop a compressed representation of the input. Applications: anomaly detection, data denoising and ... . 
+ 
+ ![](https://github.com/mohammadhashemii/Web-Crawler-Detection/blob/master/images/autoencoder.png)
+
+ The training configuration we use is as follows. These can be modified in `configs.py` [configs/](https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/configs).
+
+ | Setting | Type |
+|--|--|
+| *Optimizer* | Adam |
+| *Loss* | MSE |
+| *Activations* | ReLu |
+| *# of epochs* | 20|
+| *Batch size* | 64 |
+| *Percentage of image requests* | Web crawlers usually ignore images |
+
+Additionally, multiple architectures have been tested and the comparison of them is shown below:
+
+ | # of neurons | Train loss | Test loss |
+|--|--|
+| *[15, 7, 15]* | 0.42 | 0.48 |
+| ***[15, 3, 15]*** | 0.28 | 0.39 |
+| *[15, 7, 3, 7, 15]* | 0.29 | 0.43 |
+| *[15, 7, 7, 7, 15]* | 0.31 | 0.42 |
+
+As for all the unsupervised algorithms an anomaly score threshold should be selected, after many experiments, the MSE threshold which fits best for the dataset is 0.26. But you can modify it based on you own dataset in `configs.py` [configs/](https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/configs).
+
