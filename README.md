@@ -23,21 +23,23 @@ A sample record structure is as follows:
 
 ## EDA
 
-In this phase we just got to know the data better! We exploratory searched about useful information in the dataset and tried to extract appropriate clues from it. It is highly recommended running the `01_sanjaghDatasetEDA.ipynb` to see what we have exactly done in this part.
+In this phase we just got to know the data better! We exploratory searched about useful information in the dataset and tried to extract appropriate clues from it. It is highly recommended running the `01_sanjaghDatasetEDA.ipynb` in [notebooks/](https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/notebooks) to see what we have exactly done in this part.
 
-Then we had to create and generate some features. Here is the list of the features we have used:
+Then we had to create and generate some features per session. These features can be modified in `my_utils.py` in (utils)[https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/utils] Here is the list of the features we have used:
 
-| Feature | Description |
+| Features per session | Description |
 |--|--|
-| *Click rate* | Higher click rate can only be achieved by an automated script  |
+| *Click rate* | Higher click rate can only be achieved by an automated script. |
 | *STD of path’s depth* | Deeper requests usually indicates a human user |
-| *Percentage of 4xx status codes* | Usually higher for crawlers as there is higher chances of hitting an outdated or deleted pages |
+| *Percentage of 4xx status codes* | Usually higher for crawlers as there is higher chances of hitting an outdated or deleted pages. |
 | *Percentage of 3xx status codes* | Indicates redirected requests|
-| *Percentage of HTTP HEAD requests* | Usually higher for crawlers as there is higher chances of hitting an outdated or deleted pages |
+| *Percentage of HTTP HEAD requests* | Usually higher for crawlers as there is higher chances of hitting an outdated or deleted pages. |
 | *Percentage of image requests* | Web crawlers usually ignore images |
-| *Average & sum of response_length & response_time* | Human users retrieve info from the web via browser, so it forces the user’s session to request additional resource automatically |
+| *Average & sum of response_length & response_time* | Human users retrieve info from the web via browser, so it forces the user’s session to request additional resource automatically.|
 | *Set the user agent attributes* | Browser - OS - is_bot - is_pc |
-| *Average of time between requests* | Is more for human requets |
+| *Average of time between requests* | Is more for human requests |
+| *Number of *robots.txt* requests* | Crawlers wants to know the limitations! |
+| *Percentage of consecutive repeated requests* | Crawlers wants to know the limitations! |
 
 ## Baseline models
 
