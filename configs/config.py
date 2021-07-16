@@ -6,7 +6,7 @@ import json
 CFG = {
     "data": {
         "path": "/Users/mohammad/Documents/git/Web-Crawler-Detection/dataset/output_sample.log",
-        "req_threshold": 10,
+        "req_threshold": 4,
         "features": ['requests_count', 'path_length_std', '4xx_percentage(%)',
                     '3xx_percentage(%)', 'HEAD_count(%)', 'image_count(%)',
                     'total_response_length', 'mean_response_length', 'total_response_time',
@@ -21,8 +21,8 @@ CFG = {
         "metric": "accuracy"
     },
     "predict": {
-        "model_weights": "/Users/mohammad/Documents/git/Web-Crawler-Detection/checkpoints/autoencoder_weights_01.h5",
-        "mse_threshold": 0.
+        "model_weights": "/Users/mohammad/Documents/git/Web-Crawler-Detection/checkpoints/autoencoder_weights_03.h5",
+        "mse_threshold": 0.27
     }
 }
 

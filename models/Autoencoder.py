@@ -45,13 +45,14 @@ class Autoencoder():
         """build and compile the keras model"""
         input_dim = self.data.shape[1]  # the # features
         encoding_dim = input_dim  # first layer
-        hidden_dim = int(encoding_dim / 2)  # hidden layer
+        hidden_dim1 = int(encoding_dim / 2)  # hidden layer 1
+        hidden_dim2 = int(encoding_dim / 4)  # hidden layer 1
 
         # model architecture
         input_layer = Input(shape=(input_dim))
         encoder = Dense(encoding_dim, activation="relu")(input_layer)
-        encoder = Dense(hidden_dim, activation="relu")(encoder)
-        decoder = Dense(encoding_dim, activation='relu')(encoder)
+        encoder = Dense(hidden_dim2, activation="relu")(encoder)
+        decoder = Dense(encoding_dim, activation="relu")(encoder)
         decoder = Dense(input_dim, activation='relu')(decoder)
         self.model = Model(inputs=input_layer, outputs=decoder)
 
