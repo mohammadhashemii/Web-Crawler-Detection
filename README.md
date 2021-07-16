@@ -25,7 +25,7 @@ A sample record structure is as follows:
 
 In this phase we just got to know the data better! We exploratory searched about useful information in the dataset and tried to extract appropriate clues from it. It is highly recommended running the `01_sanjaghDatasetEDA.ipynb` in [notebooks/](https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/notebooks) to see what we have exactly done in this part.
 
-Then we had to create and generate some features per session. These features can be modified in `my_utils.py` in (utils)[https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/utils] Here is the list of the features we have used:
+Then we had to create and generate some features per session. These features can be modified in `my_utils.py` in [utils](https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/utils) Here is the list of the features we have used:
 
 | Features per session | Description |
 |--|--|
