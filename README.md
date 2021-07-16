@@ -21,8 +21,7 @@ A sample record structure is as follows:
 | [*EDA*](https://github.com/mohammadhashemii/Web-Crawler-Detection#EDA) | Exploratory Data Analysis and Feature Engineering.  |
 | [*Baseline Models*](https://github.com/mohammadhashemii/Web-Crawler-Detection#Baseline-Models) | Train some common and baseline Clustering models for anomaly detection. |
 | [*Advanced Models*](https://github.com/mohammadhashemii/Web-Crawler-Detection#Advanced-Models) | Auto encoders are used! |
-| [*Evaluation*](https://github.com/mohammadhashemii/Web-Crawler-Detection#Evaluation) | Some custom evaluations proposed |
-| [*Demo*](https://github.com/mohammadhashemii/Web-Crawler-Detection#Evaluation) | A simple demo webpage developed|
+| [*Demo*](https://github.com/mohammadhashemii/Web-Crawler-Detection#Evaluation) | A simple demo webpage developed.|
 
 ## EDA
 
@@ -95,5 +94,35 @@ Additionally, multiple architectures have been tested and the comparison of them
 | *[15, 7, 3, 7, 15]* | 0.29 | 0.43 |
 | *[15, 7, 7, 7, 15]* | 0.31 | 0.42 |
 
-As for all the unsupervised algorithms an anomaly score threshold should be selected, after many experiments, the MSE threshold which fits best for the dataset is 0.26. But you can modify it based on you own dataset in `configs.py` which can be found in[configs/](https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/configs).
+As for all the unsupervised algorithms an anomaly score threshold should be selected, after many experiments, the MSE threshold which fits best for the dataset is 0.26. But you can modify it based on your own dataset in `configs.py` which can be found in [configs/](https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/configs). Also we evaluated our models and it can be checked thorough presentation slides in [presentation/](https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/presentation).
 
+## Demo
+
+We have used [Flask](https://flask.palletsprojects.com/en/2.0.x/) and [React](https://reactjs.org) to develop a webpage for our project. Firstly check it [here](http://157.90.221.151:3000/). In case you are interested in running the webpage locally follow the steps below:
+
+### How to run
+
+The whole source code of the webpage can be found in [App/](https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/App). Firstly, clone the repository and run the commands below:
+
+1. Clone the repo:
+
+```
+git clone https://github.com/mohammadhashemii/Web-Crawler-Detection
+cd Web-Crawler-Detection
+```
+
+2. Run the backend:
+
+```
+cd backend
+pip install flask flask-cors
+python app.py
+```
+
+3. Run the frontend:
+
+```
+cd frontend
+npm install
+npm start
+```
