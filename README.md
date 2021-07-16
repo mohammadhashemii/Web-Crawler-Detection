@@ -1,7 +1,7 @@
 # Web Crawler Detection
 This work is the final project of [Rahnema College](https://rahnemacollege.com/courses/machine_learning_fundamental) Machine Leaning internship program.
 The aim of this project is to train an unsupervised model in order to recognize the web requests given to [Sanjagh Website](https://sanjagh.pro) are crawlers or not.
-Finally, for taking advantage of this work, we had to create and develop a web application for production phase.
+Finally, for taking advantage of this work, we had to create and develop a web application for production phase. Reach the webpage by clicking this link: [Demo](http://157.90.221.151:3000/)
 
 We highly recommend you to see the presentation slides [here](https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/presentation) to get a better intuition of what we have done.
 
@@ -21,6 +21,8 @@ A sample record structure is as follows:
 | [*EDA*](https://github.com/mohammadhashemii/Web-Crawler-Detection#EDA) | Exploratory Data Analysis and Feature Engineering.  |
 | [*Baseline Models*](https://github.com/mohammadhashemii/Web-Crawler-Detection#Baseline-Models) | Train some common and baseline Clustering models for anomaly detection. |
 | [*Advanced Models*](https://github.com/mohammadhashemii/Web-Crawler-Detection#Advanced-Models) | Auto encoders are used! |
+| [*Evaluation*](https://github.com/mohammadhashemii/Web-Crawler-Detection#Evaluation) | Some custom evaluations proposed |
+| [*Demo*](https://github.com/mohammadhashemii/Web-Crawler-Detection#Evaluation) | A simple demo webpage developed|
 
 ## EDA
 
@@ -73,7 +75,7 @@ It is a neural network architecture capable of discovering structure within data
  
  ![](https://github.com/mohammadhashemii/Web-Crawler-Detection/blob/master/images/autoencoder.png)
 
- The training configuration we use is as follows. These can be modified in `configs.py` [configs/](https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/configs).
+ The training configuration we use is as follows. These can be modified in `configs.py` which can be found in [configs/](https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/configs).
 
  | Setting | Type |
 |--|--|
@@ -93,5 +95,5 @@ Additionally, multiple architectures have been tested and the comparison of them
 | *[15, 7, 3, 7, 15]* | 0.29 | 0.43 |
 | *[15, 7, 7, 7, 15]* | 0.31 | 0.42 |
 
-As for all the unsupervised algorithms an anomaly score threshold should be selected, after many experiments, the MSE threshold which fits best for the dataset is 0.26. But you can modify it based on you own dataset in `configs.py` [configs/](https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/configs).
+As for all the unsupervised algorithms an anomaly score threshold should be selected, after many experiments, the MSE threshold which fits best for the dataset is 0.26. But you can modify it based on you own dataset in `configs.py` which can be found in[configs/](https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/configs).
 
