@@ -107,22 +107,22 @@ The whole source code of the webpage can be found in [App/](https://github.com/m
 1. Clone the repo:
 
 ```
-git clone https://github.com/mohammadhashemii/Web-Crawler-Detection
-cd Web-Crawler-Detection
+$ git clone https://github.com/mohammadhashemii/Web-Crawler-Detection
+$ cd Web-Crawler-Detection
 ```
 
 2. Run the backend:
 
 ```
-cd backend
-pip install flask flask-cors
-python app.py
+$ cd backend
+$ pip install flask flask-cors
+$ python app.py
 ```
 
 3. Run the frontend:
 
 ```
-cd frontend
-npm install
-npm start
+$ cd frontend
+$ npm install
+$ npm start
 ```
