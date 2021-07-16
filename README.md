@@ -1,13 +1,13 @@
 # Web Crawler Detection
 This work is the final project of [Rahnema College](https://rahnemacollege.com/courses/machine_learning_fundamental) Machine Leaning internship program.
 The aim of this project is to train an unsupervised model in order to recognize the web requests given to [Sanjagh Website](https://sanjagh.pro) are crawlers or not.
-Finally, for taking advantage of this work, we had to create and develope a web application for production phase.
+Finally, for taking advantage of this work, we had to create and develop a web application for production phase.
 
-We highly recommend you to see the presentation slides to get a better intuition of what we have done.
+We highly recommend you to see the presentation slides [here](https://github.com/mohammadhashemii/Web-Crawler-Detection/tree/master/presentation) to get a better intuition of what we have done.
 
 ## Dataset
 
-The dataset has been obtained from the Sanjagh server logs. Altough it cannot be publicly released, a tiny sample of can be found in `output.log`. In case you are intersted in the complete dataset, you can use any other nginx log servers available in the world wide internet.
+The dataset has been obtained from the Sanjagh server logs. Although it cannot be publicly released, a tiny sample of can be found in [`output.log`](https://github.com/mohammadhashemii/Web-Crawler-Detection/blob/master/dataset/output.log). In case you are interested in the complete dataset, you can use any other nginx log servers available in the world-wide internet.
 
 A sample record structure is as follows:
 
@@ -18,12 +18,12 @@ A sample record structure is as follows:
 
 | Phase | Description |
 |--|--|
-| [*EDA*](https://github.com/mohammadhashemii/Web-Crawler-Detection#EDA) | Exploratory Data Analysis and Feature Engineering  |
-| [*Baseline Models*](https://github.com/mohammadhashemii/Web-Crawler-Detection#Baseline-Models) | Train some common and baseline clustring models for anomaly detection |
+| [*EDA*](https://github.com/mohammadhashemii/Web-Crawler-Detection#EDA) | Exploratory Data Analysis and Feature Engineering.  |
+| [*Baseline Models*](https://github.com/mohammadhashemii/Web-Crawler-Detection#Baseline-Models) | Train some common and baseline Clustering models for anomaly detection |
 
 ## EDA
 
-In this phase we just got to know the data better! We exploratary searched about useful information in the dataset and tried to extract appropriate clues from it. It is highly recommended to run the `01_sanjaghDatasetEDA.ipynb` to see what we have exactly done in this part.
+In this phase we just got to know the data better! We exploratory searched about useful information in the dataset and tried to extract appropriate clues from it. It is highly recommended running the `01_sanjaghDatasetEDA.ipynb` to see what we have exactly done in this part.
 
 Then we had to create and generate some features. Here is the list of the features we have used:
 
